@@ -16,7 +16,6 @@ import java.util.List;
 public class OrmSpringDataJpaApplication implements CommandLineRunner {
     @Autowired
     private PatientRepository patientRepository;
-    //test comment
 
     public static void main(String[] args) {
         SpringApplication.run(OrmSpringDataJpaApplication.class, args);

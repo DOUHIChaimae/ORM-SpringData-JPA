@@ -28,8 +28,8 @@ public class OrmSpringDataJpaApplication implements CommandLineRunner {
         }
         Page<Patient> patients = patientRepository.findAll(PageRequest.of(1, 5));
         System.out.println("total pages : " + patients.getTotalPages());
-        System.out.println(patients.getTotalElements());
-        System.out.println(patients.getNumber());
+        System.out.println("total elements : " + patients.getTotalElements());
+        System.out.println("number of pages : " + patients.getNumber());
         List<Patient> content = patients.getContent();
         Page<Patient> bySickness = patientRepository.findByIsSick(true, PageRequest.of(0, 5));
         bySickness.forEach(

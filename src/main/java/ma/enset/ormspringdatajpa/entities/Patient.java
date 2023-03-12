@@ -1,4 +1,4 @@
-package ma.enset.jpaap.entities;
+package ma.enset.ormspringdatajpa.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

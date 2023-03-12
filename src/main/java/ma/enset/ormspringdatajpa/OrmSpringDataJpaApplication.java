@@ -32,7 +32,8 @@ public class OrmSpringDataJpaApplication implements CommandLineRunner {
         System.out.println("number of pages : " + patients.getNumber());
         List<Patient> content = patients.getContent();
         Page<Patient> bySickness = patientRepository.findByIsSick(true, PageRequest.of(0, 5));
-        bySickness.forEach(
+        List<Patient> patientList = patientRepository.searchPatients("d%", 70);
+        patientList.forEach(
                 p -> {
                     System.out.println("======================================");
                     System.out.println(p.getId());
@@ -43,14 +44,14 @@ public class OrmSpringDataJpaApplication implements CommandLineRunner {
                 }
         );
         System.out.println("***************************");
-        Patient patient = patientRepository.findById(1L).orElse(null);
+        Patient patient = patientRepository.findById(3L).orElse(null);
         if (patient != null) {
             System.out.println(patient.getName());
             System.out.println(patient.getBirthday());
             System.out.println(patient.getIsSick());
         }
-        patient.setScore(8754);
+        patient.setScore(1000);
         patientRepository.save(patient);
-        patientRepository.deleteById(1L);
+        //patientRepository.deleteById(2L);
     }
 }

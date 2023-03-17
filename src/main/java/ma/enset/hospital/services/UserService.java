@@ -14,4 +14,6 @@ public interface UserService {
 
     void addRoleToUser(String username, String roleName);
 
+    User authenticate(String username, String password);
+
 }

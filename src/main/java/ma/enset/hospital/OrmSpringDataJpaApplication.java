@@ -63,7 +63,7 @@ public class OrmSpringDataJpaApplication {
             userService.addNewUser(user1);
 
             User user2 = new User();
-            user2.setUsername("user2");
+            user2.setUsername("admin");
             user2.setPassword("admin123");
             userService.addNewUser(user2);
 
@@ -79,7 +79,14 @@ public class OrmSpringDataJpaApplication {
             userService.addRoleToUser("admin", "USER");
             userService.addRoleToUser("admin", "ADMIN");
 
-
+            try {
+                User user = userService.authenticate("user1", "user123");
+                System.out.println(user.getUserId());
+                System.out.println(user.getUsername());
+                user.getRoles().forEach(role -> System.out.println("Role : " + role.toString()));
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         };
     }
 
